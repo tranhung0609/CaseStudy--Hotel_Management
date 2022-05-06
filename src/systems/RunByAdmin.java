@@ -62,25 +62,55 @@ public class RunByAdmin {
                         System.out.println("Nhập vào phòng ");
                         String roomName = scanner.nextLine();
                         System.out.println("Nhập ngày Check-In (dd-mm-yyyy) :");
-                        String checkIn=scanner.nextLine();
-                        LocalDate checkInDate = LocalDate.parse(checkIn,DateTimeFormatter.ofPattern("dd-LL-yyyy"));
-                        checkOut(roomName,checkInDate);
+                        String checkIn = scanner.nextLine();
+                        LocalDate checkInDate = LocalDate.parse(checkIn, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        checkOut(roomName, checkInDate);
                         break;
                     case SIXTH:
-
+                        userManage.displayUserList();
+                        break;
+                    case SEVENTH:
+                        System.out.println("Nhập tài khoản muốn xóa ");
+                        String accountDelete = scanner.nextLine();
+                        userManage.deleteByName(accountDelete);
+                        break;
+                    case EIGHTH:
+                        System.out.println("Nhập vào tháng : ");
+                        int month = Integer.parseInt(scanner.nextLine());
+                        System.out.println("Nhập vào năm ");
+                        int year = Integer.parseInt(scanner.nextLine());
+                        if (month < 1 || month > 12 || year < 2020) {
+                            System.out.println("Nhập sai dữ liệu, mời nhập lại !!!");
+                            System.out.println("----------------------------------");
+                        } else {
+                            System.out.println("Tổng doanh thu " + month + "/" + year + ": " + getTotalInMonth(month, year));
+                        }
+                        break;
+                    case NINTH:
+                        userManage.displayAll();
+                        break;
+                    case ZERO:
+                        exitOfAdmin();
                         break;
                 }
-            }
-        } catch () {
+            } while (true);
+        } catch (NumberFormatException | DateTimeParseException e) {
+            System.out.println();
+            System.out.println(" ⛔ Bạn nhập sai dữ liệu mời nhập lại !!!");
+            System.out.println("-----------------------------------------");
+            System.out.println();
+            menuOfAdmin();
         }
 
     }
 
-    private void checkOut(String roomName, LocalDate checkInDate){
-        billManager.displayBillCheckOut(roomName,checkInDate);
+    private void checkOut(String roomName, LocalDate checkInDate) {
+        billManager.displayBillCheckOut(roomName, checkInDate);
         System.out.println();
         System.out.println("⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔⛔");
         System.out.println();
+        System.out.println("Tổng số tiền thanh toán " + getTotal(roomName, checkInDate));
+        System.out.println("-----------------------------------");
 
     }
 
@@ -304,7 +334,7 @@ public class RunByAdmin {
                         break;
                 }
             } while (true);
-        } catch (NumberFormatException | DateTimeParseException e){
+        } catch (NumberFormatException | DateTimeParseException e) {
             System.out.println();
             System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
             System.out.println("-----------------------------------------------");
@@ -313,7 +343,7 @@ public class RunByAdmin {
         }
     }
 
-    private void menuOrderServiceManager(){
+    private void menuOrderServiceManager() {
         try {
             do {
                 System.out.println("╔===================================================╗");
@@ -326,33 +356,33 @@ public class RunByAdmin {
                 System.out.println("╚===================================================╝");
                 System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
                 int choiceOrderService = Integer.parseInt(scanner.nextLine());
-                if (choiceOrderService< 0 || choiceOrderService > 3){
+                if (choiceOrderService < 0 || choiceOrderService > 3) {
                     System.out.println();
                     System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                     System.out.println("-----------------------------------------------");
                     System.out.println();
                     menuOrderServiceManager();
                 }
-                switch (choiceOrderService){
+                switch (choiceOrderService) {
                     case FIRST:
                         System.out.println("Nhập tên phòng : ");
                         String roomName = scanner.nextLine();
                         System.out.println("Nhập ngày đặt dịch vụ (dd-mm-yyyy): ");
                         String date = scanner.nextLine();
-                        LocalDate orderDate = LocalDate.parse(date,DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        LocalDate orderDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
                         int choiceService = choiceService();
-                        if (choiceService<0||choiceService>8){
+                        if (choiceService < 0 || choiceService > 8) {
                             System.out.println();
                             System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                             System.out.println("-----------------------------------------------");
                             System.out.println();
                             choiceService();
                         }
-                        Bill bill = billManager.getBill(roomName,orderDate);
+                        Bill bill = billManager.getBill(roomName, orderDate);
                         Service service = serviceManager.getService(choiceService);
-                        if (bill != null && service!=null){
-                            orderServiceManager.addOderService(bill,service,orderDate);
-                        }else {
+                        if (bill != null && service != null) {
+                            orderServiceManager.addOderService(bill, service, orderDate);
+                        } else {
                             System.out.println(" ⛔ Phòng trên không tồn tại. Vui lòng nhập lại !!!");
                             System.out.println("---------------------------------------------------");
                         }
@@ -364,23 +394,23 @@ public class RunByAdmin {
                         String deleteService = scanner.nextLine();
                         System.out.println("Nhập ngày đặt dịch vụ (dd-mm-yyyy) : ");
                         String orderDate1 = scanner.nextLine();
-                        LocalDate orderDate2 = LocalDate.parse(orderDate1,DateTimeFormatter.ofPattern("dd-LL-yyyy"));
-                        orderServiceManager.deleteByRoomNameAndServiceName(deleteRoomName,deleteService,orderDate2);
+                        LocalDate orderDate2 = LocalDate.parse(orderDate1, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        orderServiceManager.deleteByRoomNameAndServiceName(deleteRoomName, deleteService, orderDate2);
                         break;
                     case THIRD:
                         System.out.println("Nhập tên phòng ");
                         String roomServiceName = scanner.nextLine();
                         System.out.println("Nhập ngày check-in (dd-mm-yyyy) : ");
                         String start = scanner.nextLine();
-                        LocalDate startDate = LocalDate.parse(start,DateTimeFormatter.ofPattern("dd-LL-yyyy"));
-                        orderServiceManager.displayByRoomName(roomServiceName,startDate);
+                        LocalDate startDate = LocalDate.parse(start, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        orderServiceManager.displayByRoomName(roomServiceName, startDate);
                         break;
                     case ZERO:
                         menuOfAdmin();
                         break;
                 }
             } while (true);
-        }catch (NumberFormatException | DateTimeParseException e){
+        } catch (NumberFormatException | DateTimeParseException e) {
             System.out.println();
             System.out.println("⛔ Bạn nhập sai dữ liệu, mời bạn nhập lại !!!");
             System.out.println("-----------------------------------------------");
