@@ -12,9 +12,6 @@ public class RoomManager {
     public static final int FIRST = 1;
     public static final int SECOND = 2;
     public static final int THRICE = 3;
-    public static final int FOURTH = 4;
-    public static final int FIVE = 5;
-    public static final int SIXTH = 6;
     public static final String PATHNAME_ROOM = "src\\filedata\\Room";
     private ArrayList<Room> roomList;
     private final Scanner scanner = new Scanner(System.in);
