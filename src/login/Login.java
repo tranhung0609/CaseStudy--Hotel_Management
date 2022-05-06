@@ -4,6 +4,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Login {
+    public static final int ZERO = 0;
+    public static final int FIRST = 1;
+    public static final int SECOND = 2;
+    public static final int THRICE = 3;
+    public static final int FOURTH = 4;
+    public static final int FIVE = 5;
+    public static final int SIXTH = 6;
     private final Scanner scanner = new Scanner(System.in);
 
     public Login(){
@@ -41,12 +48,12 @@ public class Login {
                 System.out.println("--------------------");
             }
             switch (choice){
-                case 1:
+                case FIRST:
                     loginManager();
                     break;
-                case 2:
+                case SECOND:
                     break;
-                case 0:
+                case ZERO:
                     System.exit(0);
                     break;
             }
