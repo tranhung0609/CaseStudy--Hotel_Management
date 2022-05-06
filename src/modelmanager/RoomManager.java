@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RoomManager {
-    public static final String PATHNAME_ROOM = "src\\FileData\\Room.csv";
+    public static final String PATHNAME_ROOM = "src\\filedata\\Room";
     private ArrayList<Room> roomList;
     private final Scanner scanner = new Scanner(System.in);
     private final IOFile<Room> ioFile = new IOFile<>();
@@ -128,7 +128,7 @@ public class RoomManager {
             roomList.remove(room);
             ioFile.writeFile(roomList, PATHNAME_ROOM);
             System.out.println("Xóa thành công");
-            System.out.println("----------------------");
+            System.out.println("--------------");
         } else {
             System.out.println("Không tìm thấy ID cần xóa !!!!");
             System.out.println("------------------------------");
@@ -200,7 +200,7 @@ public class RoomManager {
 
     public void writeValue(){
         try {
-            String PATH_NAME = "FileData/valueRoom.txt";
+            String PATH_NAME = "src\\filedata\\valueRoom.txt";
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(PATH_NAME));
             bufferedWriter.write(Room.VALUE);
             bufferedWriter.close();
@@ -211,7 +211,7 @@ public class RoomManager {
 
     public int setValue(){
         try {
-            String PATH_NAME = "FileData/valueRoom.txt";
+            String PATH_NAME = "src\\filedata\\valueRoom.txt";
             File file = new File(PATH_NAME);
             if (!file.exists()){
                 file.createNewFile();

@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class Bill implements Serializable {
     public static int VALUE;
     private int idBill;
@@ -77,6 +79,10 @@ public class Bill implements Serializable {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public double getTotalPrice() {
+        return (room.getRentalPrice() * (DAYS.between(startDate, endDate)));
     }
 
     @Override
