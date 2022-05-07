@@ -57,7 +57,7 @@ public class RoomManager {
         System.out.println("Nhập trạng thái phòng");
         System.out.println("1. Sẵn sàng");
         System.out.println("2. Đang trống");
-        System.out.println("2. Đang sửa");
+        System.out.println("3. Đang sửa");
         int status = scanner.nextInt();
         scanner.nextLine();
         if (getStatus(status).equals("")) {

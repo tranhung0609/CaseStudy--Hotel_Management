@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class AccountUserManage {
     private final ArrayList<AccountUser>accountUserList;
     private final IOFile<AccountUser>ioFile=new IOFile<>();
-    private final String PATHNAME_OF_ACCOUNT_USER = "src\\filedata\\accountuser";
+    private final String PATHNAME_OF_ACCOUNT_USER = "src\\filedata\\accountuser.csv";
 
     public AccountUserManage(){
         if (new File(PATHNAME_OF_ACCOUNT_USER).length() == 0){

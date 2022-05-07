@@ -104,6 +104,14 @@ public class RunByAdmin {
 
     }
 
+    private double getTotalInMonth(int month, int year){
+        return (billManager.getTotalBillInAMonth(month,year)+ orderServiceManager.getTotalInMonth(month,year));
+    }
+
+    private double getTotal(String roomName, LocalDate checkInDate){
+        return (billManager.getBillCheckOut(roomName,checkInDate)+ orderServiceManager.getTotalCheckOut(roomName,checkInDate));
+    }
+
     private void checkOut(String roomName, LocalDate checkInDate) {
         billManager.displayBillCheckOut(roomName, checkInDate);
         System.out.println();
