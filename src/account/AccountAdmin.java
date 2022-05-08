@@ -4,14 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AccountAdmin implements Serializable {
-    private String adminAccount,adminPassWord;
+    private String adminAcc, adminPass;
     private final ArrayList<AccountAdmin> accountAdminList = new ArrayList<>();
 
-
-
-    public AccountAdmin(String adminAccount, String adminPassWord) {
-        this.adminAccount = adminAccount;
-        this.adminPassWord = adminPassWord;
+    public AccountAdmin(String adminAcc, String adminPass) {
+        this.adminAcc = adminAcc;
+        this.adminPass = adminPass;
     }
 
     public AccountAdmin() {
@@ -20,28 +18,26 @@ public class AccountAdmin implements Serializable {
         accountAdminList.add(new AccountAdmin("ADMIN3", "123456"));
     }
 
-    public String getAdminAccount() {
-        return adminAccount;
+    public String getAdminAcc() {
+        return adminAcc;
     }
 
+    public String getAdminPass() {
+        return adminPass;
+    }
 
-    public String getAdminPassWord() {
-        return adminPassWord;
+    public void setAdmin(String adminAcc, String adminPass) {
+        accountAdminList.add(new AccountAdmin(adminAcc, adminPass));
     }
 
     public ArrayList<AccountAdmin> getAccountAdminList() {
         return accountAdminList;
     }
 
-    public void setAdmin(String adminAccount,String adminPassWord){
-        accountAdminList.add(new AccountAdmin(adminAccount,adminPassWord));
-    }
-
     @Override
     public String toString() {
-        return "AccountAdmin{" +
-                "adminAccount='" + adminAccount + '\'' +
-                ", adminPassWord='" + adminPassWord + '\'' +
-                '}';
+        return "AccountAdmin: " +
+                "adminAcc = '" + adminAcc + '\'' +
+                ", adminPass = '" + adminPass + '\'';
     }
 }

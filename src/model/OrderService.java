@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class OderService implements Serializable {
+public class OrderService implements Serializable {
     public static int VALUE;
     private int code;
     private Bill bill;
@@ -11,10 +11,10 @@ public class OderService implements Serializable {
     private LocalDate orderDate;
     private int quantity;
 
-    public OderService() {
+    public OrderService() {
     }
 
-    public OderService(Bill bill, Service service, LocalDate orderDate, int quantity) {
+    public OrderService(Bill bill, Service service, LocalDate orderDate, int quantity) {
         this.code = ++VALUE;
         this.bill = bill;
         this.service = service;
@@ -24,10 +24,6 @@ public class OderService implements Serializable {
 
     public int getCode() {
         return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
     }
 
     public Bill getBill() {
@@ -64,7 +60,7 @@ public class OderService implements Serializable {
 
     @Override
     public String toString() {
-        return "OderService{" +
+        return "OrderService{" +
                 "code=" + code +
                 ", bill=" + bill +
                 ", service=" + service +

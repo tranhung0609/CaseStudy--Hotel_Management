@@ -37,8 +37,8 @@ public class RunByUser {
                 int choice = choiceOfUser();
                 if (choice < 0 || choice > 4) {
                     System.out.println();
-                    System.out.println("Lựa chọn không tồn tại, mời bạn nhập lại !!!");
-                    System.out.println("--------------------------------------------");
+                    System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
+                    System.out.println("--------------------");
                 }
                 switch (choice) {
                     case FIRST:
@@ -51,7 +51,7 @@ public class RunByUser {
                         checkRoomStatus();
                         break;
                     case FOURTH:
-                        System.out.println("Nhập vào phòng muốn thuê");
+                        System.out.println("Nhập vào phòng muốn thuê:");
                         String name = scanner.nextLine();
                         Room room = roomManager.getRoom(name);
                         if (room != null) {
@@ -66,7 +66,7 @@ public class RunByUser {
                         break;
                 }
             } while (true);
-        }catch (NumberFormatException | DateTimeParseException| InputMismatchException e){
+        } catch (NumberFormatException | DateTimeParseException | InputMismatchException e) {
             System.out.println();
             System.out.println("⛔ Bạn đã nhập sai dữ liệu, vui lòng nhập lại !!!");
             System.out.println("--------------------");
@@ -75,7 +75,8 @@ public class RunByUser {
         }
     }
 
-    private int choiceOfUser() throws InputMismatchException{
+    //Menu Hệ thống User
+    private int choiceOfUser() throws InputMismatchException {
         System.out.println("╔===================================================╗");
         System.out.println("║         ▂ ▃ ▅ ▆ █ HỆ THỐNG USER █ ▆ ▅ ▃ ▂         ║");
         System.out.println("╠===================================================╣");
@@ -89,7 +90,7 @@ public class RunByUser {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    private void exitOfUser(){
+    private void exitOfUser() {
         System.out.println();
         System.out.println("⛔ Đã thoát khỏi hệ thống USER !!!");
         System.out.println("--------------------");
@@ -98,7 +99,7 @@ public class RunByUser {
         System.out.println();
     }
 
-    private void searchRoomByPrice() throws  InputMismatchException{
+    private void searchRoomByPrice() throws InputMismatchException {
         System.out.println("Nhập giá dưới:");
         double lowerPrice = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập giá trên:");

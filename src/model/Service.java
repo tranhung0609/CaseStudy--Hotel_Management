@@ -8,10 +8,10 @@ public class Service implements Serializable {
     private String serviceName;
     private double priceOfService;
 
-    public Service(String name, double price) {
+    public Service() {
     }
 
-    public Service(int idService, String serviceName, double priceOfService) {
+    public Service(String serviceName, double priceOfService) {
         this.idService = ++VALUE;
         this.serviceName = serviceName;
         this.priceOfService = priceOfService;
@@ -19,10 +19,6 @@ public class Service implements Serializable {
 
     public int getIdService() {
         return idService;
-    }
-
-    public void setIdService(int idService) {
-        this.idService = idService;
     }
 
     public String getServiceName() {

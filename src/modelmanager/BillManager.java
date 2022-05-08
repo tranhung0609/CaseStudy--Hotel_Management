@@ -66,7 +66,7 @@ public class BillManager {
         LocalDate endDate = LocalDate.parse(end, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
         Bill bill = null;
         if (startDate.isBefore(endDate) && checkRoom(room.getRoomStatus()) && checkDate(room.getRoomName(), startDate, endDate)) {
-            bill = new Bill(customerName, staffName, startDate, endDate, room);
+            bill = new Bill(room, customerName, staffName, startDate, endDate);
             billList.add(bill);
             ioFile.writeFile(billList, PATHNAME_BILL);
             writeValue();
@@ -92,7 +92,7 @@ public class BillManager {
         LocalDate endDate1 = LocalDate.parse(end1, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
         Bill bill = null;
         if (startDate1.isBefore(endDate1) && checkRoom(room.getRoomStatus()) && checkDate(room.getRoomName(), startDate1, endDate1)) {
-            bill = new Bill(customerName1, staffName1, startDate1, endDate1, room);
+            bill = new Bill(room, customerName1, staffName1, startDate1, endDate1);
             billList.add(bill);
             ioFile.writeFile(billList, PATHNAME_BILL);
             writeValue();

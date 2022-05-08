@@ -7,28 +7,30 @@ public class Validate {
     private static final String ACCOUNT_REGEX = "^(?=.*[a-z])(?=.*[0-9]).{8,12}$";
     private static final String PASS_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$]).{8,16}$";
     private static final String PHONE_REGEX = "^[(](\\+84)[)][-][0-9]{9,}$";
-    private static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+    private static final String EMAIL_REGEX = "^[a-z][a-z0-9]{0,9}\\.[a-z0-9]{1,10}@[a-z]+\\.(com|vn)+$";
 
-
-    public Validate(){
+    public Validate() {
     }
 
-    public boolean validateAccount(String regex){
+    public boolean validateAccount(String regex) {
         Pattern pattern = Pattern.compile(ACCOUNT_REGEX);
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();
     }
-    public boolean validatePassWord(String regex){
+
+    public boolean validatePassword(String regex) {
         Pattern pattern = Pattern.compile(PASS_REGEX);
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();
     }
-    public boolean validatePhone(String regex){
+
+    public boolean validatePhone(String regex) {
         Pattern pattern = Pattern.compile(PHONE_REGEX);
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();
     }
-    public boolean validateEmail(String regex){
+
+    public boolean validateEmail(String regex) {
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();

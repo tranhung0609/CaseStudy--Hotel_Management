@@ -9,13 +9,13 @@ public class User extends AccountUser implements Serializable {
     public User() {
     }
 
-    public User(String account, String password, String name, String address, String phoneNumber, String email, int age) {
+    public User(String account, String password, String name, int age, String address, String phoneNumber, String email) {
         super(account, password);
         this.name = name;
+        this.age = age;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.age = age;
     }
 
     public String getName() {

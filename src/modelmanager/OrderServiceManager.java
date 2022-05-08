@@ -1,7 +1,7 @@
 package modelmanager;
 
 import model.Bill;
-import model.OderService;
+import model.OrderService;
 import model.Service;
 import write_read_File.IOFile;
 
@@ -12,57 +12,55 @@ import java.util.Scanner;
 
 public class OrderServiceManager {
     private static final String PATHNAME_ORDER_SERVICE = "src\\filedata\\OrderServices";
-    private final ArrayList<OderService> oderServicesList;
+    private final ArrayList<OrderService> orderServiceList;
     private final Scanner scanner = new Scanner(System.in);
-    private final IOFile<OderService> ioFile = new IOFile<>();
+    private final IOFile<OrderService> ioFile = new IOFile<>();
 
     public OrderServiceManager() {
         if (new File(PATHNAME_ORDER_SERVICE).length() == 0) {
-            this.oderServicesList = new ArrayList<>();
+            this.orderServiceList = new ArrayList<>();
         } else {
-            this.oderServicesList = ioFile.readFile(PATHNAME_ORDER_SERVICE);
+            this.orderServiceList = ioFile.readFile(PATHNAME_ORDER_SERVICE);
         }
     }
 
-    public ArrayList<OderService> getOderServicesList() {
-        return oderServicesList;
+    public ArrayList<OrderService> getOrderServiceList() {
+        return orderServiceList;
     }
 
-    public void addOderService(Bill bill, Service service, LocalDate orderDate) {
-        OderService.VALUE = setValue();
-        System.out.println("Nhập số lượng: ");
+    public void addOrderService(Bill bill, Service service, LocalDate orderDate) {
+        OrderService.VALUE = setValue();
+        System.out.println("Nhập số lượng:");
         int quantity = Integer.parseInt(scanner.nextLine());
-        OderService oderService = new OderService(bill, service, orderDate, quantity);
-        oderServicesList.add(oderService);
-        ioFile.writeFile(oderServicesList, PATHNAME_ORDER_SERVICE);
+        OrderService orderService = new OrderService(bill, service, orderDate, quantity);
+        orderServiceList.add(orderService);
+        ioFile.writeFile(orderServiceList, PATHNAME_ORDER_SERVICE);
         writeValue();
-        System.out.println("Thêm dịch vụ " + service.getServiceName() + " của phòng " + bill.getRoom().getRoomName() + " thành công !!!");
-        System.out.println("------------------------------");
+        System.out.println("⛔ Thêm dịch vụ " + service.getServiceName() + " của phòng " + bill.getRoom().getRoomName() + " thành công !!!");
+        System.out.println("--------------------");
     }
 
     public void deleteByRoomNameAndServiceName(String roomName, String serviceName, LocalDate orderDate) {
-        OderService oderService = null;
-        for (OderService order :
-                oderServicesList) {
+        OrderService orderService = null;
+        for (OrderService order : orderServiceList) {
             if (order.getBill().getRoom().getRoomName().equals(roomName) && order.getService().getServiceName().equalsIgnoreCase(serviceName) && order.getOrderDate().isEqual(orderDate)) {
-                oderService = order;
+                orderService = order;
             }
         }
-        if (oderService != null) {
-            oderServicesList.remove(oderService);
-            ioFile.writeFile(oderServicesList, PATHNAME_ORDER_SERVICE);
-            System.out.println("Xóa dịch vụ " + serviceName + " của phòng " + roomName + " thành công !!!");
-            System.out.println("---------------------------");
+        if (orderService != null) {
+            orderServiceList.remove(orderService);
+            ioFile.writeFile(orderServiceList, PATHNAME_ORDER_SERVICE);
+            System.out.println("⛔ Xóa dịch vụ " + serviceName + " của phòng " + roomName + " thành công !!!");
+            System.out.println("--------------------");
         } else {
-            System.out.println("Không tìm thấy dịch vụ cần xóa ");
-            System.out.println("-------------------------------");
+            System.out.println("⛔ Không tìm thấy dịch vụ cần xóa !!!");
+            System.out.println("--------------------");
         }
     }
 
-    public double getTotalInMonth(int month, int year) {
+    public double getTotalInAMonth(int month, int year) {
         double total = 0;
-        for (OderService orderService : oderServicesList
-        ) {
+        for (OrderService orderService : orderServiceList) {
             double getTotalOrderService = orderService.getQuantity() * orderService.getService().getPriceOfService();
             if (orderService.getOrderDate().getMonth().getValue() == month && orderService.getOrderDate().getYear() == year) {
                 total += getTotalOrderService;
@@ -73,11 +71,10 @@ public class OrderServiceManager {
 
     public double getTotalCheckOut(String roomName, LocalDate startDate) {
         double totalCheckOut = 0;
-        for (OderService oderService :
-                oderServicesList) {
-            boolean checkRoomName = oderService.getBill().getRoom().getRoomName().equals(roomName);
-            boolean checkDate = oderService.getBill().getStartDate().isEqual(startDate);
-            double getTotalOrderService = oderService.getQuantity() * oderService.getService().getPriceOfService();
+        for (OrderService orderService : orderServiceList) {
+            boolean checkRoomName = orderService.getBill().getRoom().getRoomName().equals(roomName);
+            boolean checkDate = orderService.getBill().getStartDate().isEqual(startDate);
+            double getTotalOrderService = orderService.getQuantity() * orderService.getService().getPriceOfService();
             if (checkRoomName && checkDate) {
                 totalCheckOut += getTotalOrderService;
             }
@@ -89,7 +86,7 @@ public class OrderServiceManager {
         System.out.println("---------------------------------------------------------------------------------");
         System.out.printf("| %-10s| %-20s| %-15s| %-10s| %-15s|\n", "Ngày", "Tên dịch vụ", "Giá tiền", "Số lượng", "Thành tiền");
         System.out.println("---------------------------------------------------------------------------------");
-        for (OderService orderService : oderServicesList) {
+        for (OrderService orderService : orderServiceList) {
             boolean checkRoomName = orderService.getBill().getRoom().getRoomName().equals(roomName);
             boolean checkDate = orderService.getBill().getStartDate().isEqual(startDate);
             double getTotalOrderService = orderService.getQuantity() * orderService.getService().getPriceOfService();
@@ -105,10 +102,10 @@ public class OrderServiceManager {
         try {
             String PATH_NAME = "src\\filedata\\valueOrderService.txt";
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(PATH_NAME));
-            bufferedWriter.write(OderService.VALUE);
+            bufferedWriter.write(OrderService.VALUE);
             bufferedWriter.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
         }
     }
 
@@ -125,8 +122,8 @@ public class OrderServiceManager {
                     return i;
                 }
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
         }
         return 0;
     }

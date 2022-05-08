@@ -4,24 +4,24 @@ import java.io.Serializable;
 
 public class Room implements Serializable {
     public static int VALUE;
-    private int id, numberBedRooms, numberToilets;
-    private String roomName, roomStatus;
+    private int id, numberBedrooms, numberToilets;
+    String roomName, roomStatus;
     double rentalPrice;
 
-    public Room(String roomName, int numberBedRooms, int numberToilets, double rentalPrice, String roomStatus) {
+    public Room(String roomName, int numberBedrooms, int numberToilets, double rentalPrice, String roomStatus) {
         this.id = ++VALUE;
         this.roomName = roomName;
-        this.numberBedRooms = numberBedRooms;
+        this.numberBedrooms = numberBedrooms;
         this.numberToilets = numberToilets;
         this.rentalPrice = rentalPrice;
         this.roomStatus = roomStatus;
 
     }
 
-    public Room(int id, String roomName, int numberBedRooms, int numberToilets, double rentalPrice, String roomStatus) {
+    public Room(int id, String roomName, int numberBedrooms, int numberToilets, double rentalPrice, String roomStatus) {
         this.id = id;
         this.roomName = roomName;
-        this.numberBedRooms = numberBedRooms;
+        this.numberBedrooms = numberBedrooms;
         this.numberToilets = numberToilets;
         this.rentalPrice = rentalPrice;
         this.roomStatus = roomStatus;
@@ -34,12 +34,12 @@ public class Room implements Serializable {
         return id;
     }
 
-    public int getNumberBedRooms() {
-        return numberBedRooms;
+    public int getNumberBedrooms() {
+        return numberBedrooms;
     }
 
-    public void setNumberBedRooms(int numberBedRooms) {
-        this.numberBedRooms = numberBedRooms;
+    public void setNumberBedrooms(int numberBedrooms) {
+        this.numberBedrooms = numberBedrooms;
     }
 
     public int getNumberToilets() {
@@ -79,7 +79,7 @@ public class Room implements Serializable {
         return "Room{" +
                 "id=" + id +
                 ", roomName='" + roomName + '\'' +
-                ", numberBedrooms=" + numberBedRooms +
+                ", numberBedrooms=" + numberBedrooms +
                 ", numberToilets=" + numberToilets +
                 ", rentalPrice=" + rentalPrice +
                 ", roomStatus='" + roomStatus + '\'' +

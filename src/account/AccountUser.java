@@ -3,14 +3,14 @@ package account;
 import java.io.Serializable;
 
 public class AccountUser implements Serializable {
-    private String account,password;
-
-    public AccountUser() {
-    }
+    private String account, password;
 
     public AccountUser(String account, String password) {
         this.account = account;
         this.password = password;
+    }
+
+    public AccountUser() {
     }
 
     public String getAccount() {
@@ -31,9 +31,8 @@ public class AccountUser implements Serializable {
 
     @Override
     public String toString() {
-        return "AccountUser{" +
-                "account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "AccountUser: " +
+                " account = '" + account + '\'' +
+                ", password = '" + password + '\'';
     }
 }

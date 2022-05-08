@@ -8,37 +8,41 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class Bill implements Serializable {
     public static int VALUE;
     private int idBill;
-    private String customerName , staffName;
-    private LocalDate startDate , endDate;
+    private String customerName, staffName;
+    private LocalDate startDate, endDate;
     private Room room;
 
     public Bill() {
     }
 
-    public Bill( String customerName, String staffName, LocalDate startDate, LocalDate endDate, Room room) {
+    public Bill(Room room, String customerName, String staffName, LocalDate startDate, LocalDate endDate) {
         this.idBill = ++VALUE;
+        this.room = room;
         this.customerName = customerName;
         this.staffName = staffName;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.room = room;
     }
 
-    public Bill(int idBill, String customerName, String staffName, LocalDate startDate, LocalDate endDate, Room room) {
+    public Bill(int idBill, Room room, String customerName, String staffName, LocalDate startDate, LocalDate endDate) {
         this.idBill = idBill;
+        this.room = room;
         this.customerName = customerName;
         this.staffName = staffName;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.room = room;
     }
 
     public int getIdBill() {
         return idBill;
     }
 
-    public void setIdBill(int idBill) {
-        this.idBill = idBill;
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     public String getCustomerName() {
@@ -73,14 +77,6 @@ public class Bill implements Serializable {
         this.endDate = endDate;
     }
 
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
     public double getTotalPrice() {
         return (room.getRentalPrice() * (DAYS.between(startDate, endDate)));
     }
@@ -89,11 +85,12 @@ public class Bill implements Serializable {
     public String toString() {
         return "Bill{" +
                 "idBill=" + idBill +
+                ", roomName='" + room.getRoomName() + '\'' +
                 ", customerName='" + customerName + '\'' +
                 ", staffName='" + staffName + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", room=" + room +
+                ", Total=" + getTotalPrice() +
                 '}';
     }
 }

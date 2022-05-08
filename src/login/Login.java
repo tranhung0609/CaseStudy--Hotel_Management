@@ -2,8 +2,8 @@ package login;
 
 import account.AccountAdmin;
 import account.AccountUser;
-import account.AccountUserManage;
-import account.UserManage;
+import account.AccountUserManager;
+import account.UserManager;
 import systems.RunByAdmin;
 import systems.RunByUser;
 import validate.Validate;
@@ -23,8 +23,8 @@ public class Login {
     private final RunByAdmin runByAdmin = new RunByAdmin();
     private final RunByUser runByUser = new RunByUser();
     private final AccountAdmin accountAdmin = new AccountAdmin();
-    private final AccountUserManage accountUserManager = new AccountUserManage();
-    private final UserManage userManager = new UserManage();
+    private final AccountUserManager accountUserManager = new AccountUserManager();
+    private final UserManager userManager = new UserManager();
     private final Validate validate = new Validate();
 
     public Login() {
@@ -35,14 +35,15 @@ public class Login {
             menuLogin();
         } catch (NullPointerException | NumberFormatException e) {
             System.out.println();
-            System.out.println("Đã nhập sai dữ liệu, mời nhập lại !!!");
+            System.out.println("Bạn nhập sai dữ liệu, mời nhập lại !!!");
             System.out.println("--------------------");
             System.out.println();
             loginSystems();
         }
     }
 
-    public void menuLogin() throws NumberFormatException {
+    //Menu
+    private void menuLogin() throws NumberFormatException {
         do {
             System.out.println();
             System.out.println("               \uD83C\uDFE8 ラブホテル \uD83C\uDFE8");
@@ -75,6 +76,7 @@ public class Login {
         } while (true);
     }
 
+    //Đăng nhập
     private void loginManager() throws InputMismatchException {
         System.out.println("┎──────────────[ĐĂNG NHẬP]──────────────┒");
         System.out.print("┠ ▹ Nhập tài khoản: ");
@@ -91,7 +93,7 @@ public class Login {
             if (checkLoginAccountAdmin(account, password)) {
                 System.out.println();
                 System.out.println("⛔ Đặng nhập hệ thống bởi ADMIN thành công !!!");
-                System.out.println("---------------------------------------------");
+                System.out.println("--------------------");
                 System.out.println();
                 runByAdmin.menuOfAdmin();
             } else {
@@ -124,7 +126,7 @@ public class Login {
 
     private boolean checkLoginAccountAdmin(String account, String password) {
         for (AccountAdmin accountAdmin : accountAdmin.getAccountAdminList()) {
-            boolean checkAccountAdmin = account.equals(accountAdmin.getAdminAccount()) && password.equals(accountAdmin.getAdminPassWord());
+            boolean checkAccountAdmin = account.equals(accountAdmin.getAdminAcc()) && password.equals(accountAdmin.getAdminPass());
             if (checkAccountAdmin) {
                 return true;
             }
@@ -142,6 +144,7 @@ public class Login {
         return false;
     }
 
+    //Đăng ký
     public void registerAccountUser() throws InputMismatchException {
         System.out.println("┎──────────────[ĐĂNG KÝ]──────────────┒");
         System.out.println("[\uD83D\uDD11] Mời bạn nhập thông tin:");
@@ -158,8 +161,6 @@ public class Login {
         System.out.println("┖─────────────────────────────────────┚");
 
         checkAccountUser(accountUser, passwordUser, name, age, address, phoneNumber, email);
-
-
     }
 
     private int enterAge() {
@@ -203,7 +204,7 @@ public class Login {
         while (true) {
             System.out.print("┠ ▹ Nhập passwword: ");
             String password = scanner.nextLine();
-            if (!validate.validatePassWord(password)) {
+            if (!validate.validatePassword(password)) {
                 System.out.println("⛔ Mật khẩu không hợp lệ !!!");
                 System.out.println(">[Chú ý]: Mật khẩu phải từ 8 - 16 ký tự (a,A,1,...) bao gồm 1 ký tự đặc biệt (@,#,$)");
                 System.out.println("--------------------");
@@ -249,7 +250,6 @@ public class Login {
         return email;
     }
 
-
     private void checkAccountUser(String accountUser, String passwordUser, String name, int age, String address, String phoneNumber, String email) {
         if (checkAccount(accountUser)) {
             System.out.println();
@@ -278,8 +278,7 @@ public class Login {
 
     private void writeAccountUserAndUser(String accountUser, String passwordUser, String name, int age, String address, String phoneNumber, String email) {
         accountUserManager.setListUser(accountUser, passwordUser);
-        userManager.setListUser(accountUser, passwordUser, name, address, phoneNumber, email, age);
+        userManager.setListUser(accountUser, passwordUser, name, age, address, phoneNumber, email);
     }
-
 }
 
