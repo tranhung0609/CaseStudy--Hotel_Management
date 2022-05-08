@@ -1,6 +1,8 @@
 package account;
 
-public class AccountUser {
+import java.io.Serializable;
+
+public class AccountUser implements Serializable {
     private String account,password;
 
     public AccountUser() {

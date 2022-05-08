@@ -157,8 +157,6 @@ public class Login {
         String email = enterEmail();
         System.out.println("┖─────────────────────────────────────┚");
 
-        System.out.println(accountUser);
-
         checkAccountUser(accountUser, passwordUser, name, age, address, phoneNumber, email);
 
 

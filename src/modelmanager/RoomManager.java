@@ -46,6 +46,7 @@ public class RoomManager {
     }
 
     public void addRoom() {
+        Room.VALUE = setValue();
         System.out.println("Nhập tên phòng : ");
         String roomName = scanner.nextLine();
         System.out.println("Nhập số lượng phòng ngủ : ");
@@ -65,13 +66,14 @@ public class RoomManager {
             System.out.println("-----------------------------------");
             return;
         }
-        for (Room room1 : roomList) {
-            if (room1.getRoomName().equals(roomName)) {
-                System.out.println("Tên phòng bị trùng, mời nhập lại !!");
-                System.out.println("-----------------------------------");
-                return;
+            for (Room room1 : roomList) {
+                if (room1.getRoomName().equals(roomName)) {
+                    System.out.println("Tên phòng bị trùng, mời nhập lại !!");
+                    System.out.println("-----------------------------------");
+                    return;
+                }
             }
-        }
+
 
         Room room = new Room(roomName, numberBedrooms, numberToilets, rentalPrice, getStatus(status));
         roomList.add(room);
@@ -80,6 +82,7 @@ public class RoomManager {
         System.out.println("Thêm phòng " + roomName + " thành công !!!");
         System.out.println("--------------------------------------------");
     }
+
 
     public void editRoom(int id) {
         Room editRoom = null;
@@ -136,12 +139,11 @@ public class RoomManager {
         } else {
             System.out.println("Không tìm thấy ID cần xóa !!!!");
             System.out.println("------------------------------");
-            return;
         }
     }
 
-    public void displayRoomList(){
-        if (roomList.isEmpty()){
+    public void displayRoomList() {
+        if (roomList.isEmpty()) {
             System.out.println("Danh sách phòng chưa được cập nhật !!");
             System.out.println("----------------------------------");
             return;
@@ -156,17 +158,17 @@ public class RoomManager {
         }
     }
 
-    public void searchByPriceAndStatus(double lowerPrice, double abovePrice){
+    public void searchByPriceAndStatus(double lowerPrice, double abovePrice) {
         ArrayList<Room> rooms = new ArrayList<>();
         boolean checkRoom = false;
-        for (Room room:
-             roomList) {
-            if (room.getRentalPrice() >= lowerPrice && room.getRentalPrice()<=abovePrice && room.getRoomStatus().equals("Đang trống")){
+        for (Room room :
+                roomList) {
+            if (room.getRentalPrice() >= lowerPrice && room.getRentalPrice() <= abovePrice && room.getRoomStatus().equals("Đang trống")) {
                 rooms.add(room);
-                checkRoom= true;
+                checkRoom = true;
             }
         }
-        if (checkRoom){
+        if (checkRoom) {
             System.out.println("----------------------------------------------------");
             System.out.printf("| %-15s| %-15s| %-15s|\n", "Tên", "Giá", "Trạng thái");
             System.out.println("----------------------------------------------------");
@@ -175,14 +177,14 @@ public class RoomManager {
                 System.out.println();
                 System.out.println("----------------------------------------------------");
             }
-        }else {
+        } else {
             System.out.println("Không tìm thấy phòng nào!!!");
             System.out.println("---------------------------");
         }
     }
 
-    public void displayAll(){
-        if (roomList.isEmpty()){
+    public void displayAll() {
+        if (roomList.isEmpty()) {
             System.out.println("Danh sách phòng chưa được cập nhật");
             System.out.println("----------------------------------");
             return;
@@ -191,42 +193,42 @@ public class RoomManager {
         System.out.println("-----------------------");
     }
 
-    public Room getRoom (String roomName){
+    public Room getRoom(String roomName) {
         Room room = null;
         for (Room room1 :
-             roomList) {
-            if (room1.getRoomName().equals(roomName)){
+                roomList) {
+            if (room1.getRoomName().equals(roomName)) {
                 room = room1;
             }
         }
         return room;
     }
 
-    public void writeValue(){
+    public void writeValue() {
         try {
             String PATH_NAME = "src\\filedata\\valueRoom.txt";
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(PATH_NAME));
             bufferedWriter.write(Room.VALUE);
             bufferedWriter.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public int setValue(){
+    public int setValue() {
         try {
             String PATH_NAME = "src\\filedata\\valueRoom.txt";
             File file = new File(PATH_NAME);
-            if (!file.exists()){
+            if (!file.exists()) {
                 file.createNewFile();
-            }else  {
+            } else {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
                 int i;
-                if ((i = bufferedReader.read()) != -1){
+                if ((i = bufferedReader.read()) != -1) {
                     return i;
                 }
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         return 0;

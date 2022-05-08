@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Room implements Serializable {
     public static int VALUE;
     private int id, numberBedRooms, numberToilets;
-    String roomName, roomStatus;
+    private String roomName, roomStatus;
     double rentalPrice;
 
     public Room(String roomName, int numberBedRooms, int numberToilets, double rentalPrice, String roomStatus) {
