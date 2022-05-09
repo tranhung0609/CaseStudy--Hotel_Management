@@ -71,7 +71,7 @@ public class BillManager {
             ioFile.writeFile(billList, PATHNAME_BILL);
             writeValue();
             System.out.println("Thêm bill của khách hàng " + customerName + " thành công !!!");
-            System.out.println("--------------------");
+            System.out.println("------------------------------------------------------------");
         } else {
             System.out.println("- Phòng đang sửa hoặc đã có người thuê");
             System.out.println("- Nhập sai dữ liệu, xin mời nhập lại !!!");
@@ -97,11 +97,10 @@ public class BillManager {
             ioFile.writeFile(billList, PATHNAME_BILL);
             writeValue();
             System.out.println("Đặt phòng của khách hàng " + customerName1 + " thành công !!!");
-            System.out.println("--------------------");
+            System.out.println("-------------------------------------------------------------");
         } else {
-            System.out.println("- Phòng đang sửa hoặc đã có người thuê");
-            System.out.println("- Nhập sai dữ liệu, xin mời nhập lại !!!");
-            System.out.println("--------------------");
+            System.out.println("- Phòng đang sửa hoặc đã có người thuê. Mời chọn phòng khác !!");
+            System.out.println("---------------------------------------------------------------");
         }
     }
 

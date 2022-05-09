@@ -123,7 +123,9 @@ public class RunByAdmin {
         System.out.println("--------------------");
     }
 
-    //Menu của Hệ thống Admin
+
+
+
     private int choiceOfAdmin() {
         System.out.println("╔===================================================╗");
         System.out.println("║         ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂        ║");
@@ -151,7 +153,9 @@ public class RunByAdmin {
         System.out.println();
     }
 
-    //Menu quản lý phòng
+
+
+
     private void menuRoomManager() {
         try {
             do {
@@ -168,7 +172,7 @@ public class RunByAdmin {
                 System.out.println("║>[0]. Thoát                                        ║");
                 System.out.println("╚===================================================╝");
                 System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-                int choiceRoom = Integer.parseInt(scan.nextLine());
+                int choiceRoom = scan.nextInt();
                 if (choiceRoom < 0 || choiceRoom > 7) {
                     System.out.println();
                     System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
@@ -208,6 +212,7 @@ public class RunByAdmin {
                     case SIXTH:
                         System.out.println("Nhập tên phòng:");
                         String name = scan.nextLine();
+                        scan.nextLine();
                         System.out.println("Nhập ngày bắt đầu(dd-mm-yyyy):");
                         String before = scan.nextLine();
                         LocalDate beforeDate = LocalDate.parse(before, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
@@ -233,7 +238,8 @@ public class RunByAdmin {
         }
     }
 
-    //Menu quản lý hóa đơn
+
+
     private void menuBillManager() {
         try {
             do {
@@ -248,7 +254,7 @@ public class RunByAdmin {
                 System.out.println("║>[0]. Thoát                                        ║");
                 System.out.println("╚===================================================╝");
                 System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-                int choiceBill = Integer.parseInt(scan.nextLine());
+                int choiceBill = scan.nextInt();
                 if (choiceBill < 0 || choiceBill > 5) {
                     System.out.println();
                     System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
@@ -300,7 +306,8 @@ public class RunByAdmin {
         }
     }
 
-    //Menu Service
+
+
     private void menuServiceManager() {
         try {
             do {
@@ -314,7 +321,7 @@ public class RunByAdmin {
                 System.out.println("║>[0]. Thoát                                        ║");
                 System.out.println("╚===================================================╝");
                 System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-                int choiceService = Integer.parseInt(scan.nextLine());
+                int choiceService = scan.nextInt();
                 if (choiceService < 0 || choiceService > 4) {
                     System.out.println();
                     System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
@@ -353,7 +360,7 @@ public class RunByAdmin {
         }
     }
 
-    //Menu Order Service
+
     private void menuOrderServiceManager() {
         try {
             do {
@@ -366,7 +373,7 @@ public class RunByAdmin {
                 System.out.println("║>[0]. Thoát                                        ║");
                 System.out.println("╚===================================================╝");
                 System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-                int choiceOrderService = Integer.parseInt(scan.nextLine());
+                int choiceOrderService = scan.nextInt();
                 if (choiceOrderService < 0 || choiceOrderService > 3) {
                     System.out.println();
                     System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
@@ -430,7 +437,9 @@ public class RunByAdmin {
         }
     }
 
-    //Menu choice Service
+
+
+
     private int choiceService() {
         System.out.println("╔===================================================╗");
         System.out.println("║             ▂ ▃ ▅ ▆ █ SERVICE █ ▆ ▅ ▃ ▂           ║");

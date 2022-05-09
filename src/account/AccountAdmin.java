@@ -13,9 +13,9 @@ public class AccountAdmin implements Serializable {
     }
 
     public AccountAdmin() {
-        accountAdminList.add(new AccountAdmin("ADMIN1", "123456"));
-        accountAdminList.add(new AccountAdmin("ADMIN2", "123456"));
-        accountAdminList.add(new AccountAdmin("ADMIN3", "123456"));
+        accountAdminList.add(new AccountAdmin("admin", "admin"));
+        accountAdminList.add(new AccountAdmin("admin1", "admin1"));
+        accountAdminList.add(new AccountAdmin("admin2", "admin2"));
     }
 
     public String getAdminAcc() {

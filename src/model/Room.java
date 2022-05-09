@@ -76,13 +76,13 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-        return "Room{" +
+        return "Phòng ( " +
                 "id=" + id +
-                ", roomName='" + roomName + '\'' +
-                ", numberBedrooms=" + numberBedrooms +
-                ", numberToilets=" + numberToilets +
-                ", rentalPrice=" + rentalPrice +
-                ", roomStatus='" + roomStatus + '\'' +
-                '}';
+                ", Tên phòng : " + roomName +
+                ", Số giường ngủ :" + numberBedrooms +
+                ", Số nhà vệ sinh : " + numberToilets +
+                ", Giá thuê/đêm" + rentalPrice +
+                ", Trạng thái hiện tại : " + roomStatus +
+                ')';
     }
 }

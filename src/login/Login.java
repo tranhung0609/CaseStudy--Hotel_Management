@@ -42,7 +42,7 @@ public class Login {
         }
     }
 
-    //Menu
+
     private void menuLogin() throws NumberFormatException {
         do {
             System.out.println();
@@ -70,6 +70,7 @@ public class Login {
                     registerAccountUser();
                     break;
                 case ZERO:
+                    System.out.println("Khách sạn ラブホテル xin cảm ơn quý khách");
                     System.exit(0);
                     break;
             }
@@ -223,7 +224,7 @@ public class Login {
             String phone = scanner.nextLine();
             if (!validate.validatePhone(phone)) {
                 System.out.println("⛔ Số điện thoại không hợp lệ !!!");
-                System.out.println(">[Chú ý]: Số điện thoại phải có 10 số (0 - 9) định dạng: (+84)-911112222");
+                System.out.println(">[Chú ý]: Số điện thoại phải định dạng : (084-xx-xxxxxxx)");
                 System.out.println("--------------------");
             } else {
                 phoneNumber = phone;
