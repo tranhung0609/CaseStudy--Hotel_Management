@@ -79,9 +79,9 @@ public class Room implements Serializable {
         return "Phòng ( " +
                 "id=" + id +
                 ", Tên phòng : " + roomName +
-                ", Số giường ngủ :" + numberBedrooms +
+                ", Số giường ngủ : " + numberBedrooms +
                 ", Số nhà vệ sinh : " + numberToilets +
-                ", Giá thuê/đêm" + rentalPrice +
+                ", Giá thuê " + rentalPrice +
                 ", Trạng thái hiện tại : " + roomStatus +
                 ')';
     }

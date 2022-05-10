@@ -92,7 +92,7 @@ public class RunByUser {
 
     private void exitOfUser() {
         System.out.println();
-        System.out.println("⛔ Đã thoát khỏi hệ thống USER !!!");
+        System.out.println("⛔ Chúc quý khách có kỳ nghỉ vui vẻ (^-^)(^_^)!!!");
         System.out.println("--------------------");
         System.out.println();
         (new Login()).loginSystems();
@@ -117,10 +117,10 @@ public class RunByUser {
         String name = scanner.nextLine();
         System.out.println("Nhập ngày bắt đầu(dd-mm-yyyy):");
         String before = scanner.nextLine();
-        LocalDate beforeDate = LocalDate.parse(before, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+        LocalDate  beforeDate = LocalDate.parse(before, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println("Nhập ngày kết thúc(dd-mm-yyyy):");
         String after = scanner.nextLine();
-        LocalDate afterDate = LocalDate.parse(after, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+        LocalDate afterDate = LocalDate.parse(after, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         billManager.checkRoomStatus(name, beforeDate, afterDate);
     }
 }

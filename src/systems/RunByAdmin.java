@@ -17,6 +17,18 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RunByAdmin {
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
+
     public static final int ZERO = 0;
     public static final int FIRST = 1;
     public static final int SECOND = 2;
@@ -61,10 +73,11 @@ public class RunByAdmin {
                         break;
                     case FIVE:
                         System.out.println("Nhập vào phòng:");
+                        scan.nextLine();
                         String roomName = scan.nextLine();
                         System.out.println("Nhập ngày Check-in(dd-mm-yyyy):");
                         String checkIn = scan.nextLine();
-                        LocalDate checkInDate = LocalDate.parse(checkIn, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        LocalDate checkInDate = LocalDate.parse(checkIn, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                         checkOut(roomName, checkInDate);
                         break;
                     case SIXTH:
@@ -73,13 +86,14 @@ public class RunByAdmin {
                     case SEVENTH:
                         System.out.println("Nhập tài khoản muốn xóa:");
                         String accountDelete = scan.nextLine();
+                        scan.nextLine();
                         userManager.deleteByName(accountDelete);
                         break;
                     case EIGHTH:
                         System.out.println("Nhập vào tháng:");
-                        int month = Integer.parseInt(scan.nextLine());
+                        int month = scan.nextInt();
                         System.out.println("Nhập vào năm:");
-                        int year = Integer.parseInt(scan.nextLine());
+                        int year = scan.nextInt();
                         if (month < 1 || month > 12 || year < 2015) {
                             System.out.println("⛔ Nhập sai dữ liệu, mời nhập lại !!!");
                             System.out.println("--------------------");
@@ -124,10 +138,8 @@ public class RunByAdmin {
     }
 
 
-
-
     private int choiceOfAdmin() {
-        System.out.println("╔===================================================╗");
+        System.out.println(ANSI_CYAN+"╔===================================================╗");
         System.out.println("║         ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂        ║");
         System.out.println("╠===================================================╣");
         System.out.println("║>[1]. Quản lý phòng                                ║");
@@ -139,9 +151,10 @@ public class RunByAdmin {
         System.out.println("║>[7]. Xóa USER                                     ║");
         System.out.println("║>[8]. Tính tổng doanh thu theo tháng               ║");
         System.out.println("║>[0]. Đăng xuất                                    ║");
-        System.out.println("╚===================================================╝");
+        System.out.println("╚===================================================╝"+ ANSI_RESET);
         System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-        return Integer.parseInt(scan.nextLine());
+        return scan.nextInt();
+
     }
 
     private void exitOfAdmin() {
@@ -154,12 +167,10 @@ public class RunByAdmin {
     }
 
 
-
-
     private void menuRoomManager() {
         try {
             do {
-                System.out.println("╔===================================================╗");
+                System.out.println(ANSI_CYAN+"╔===================================================╗");
                 System.out.println("║         ▂ ▃ ▅ ▆ █ QUẢN LÝ PHÒNG █ ▆ ▅ ▃ ▂         ║");
                 System.out.println("╠===================================================╣");
                 System.out.println("║>[1]. Thêm phòng                                   ║");
@@ -170,9 +181,10 @@ public class RunByAdmin {
                 System.out.println("║>[6]. Kiểm tra trạng thái phòng                    ║");
                 System.out.println("║>[7]. Hiển thị toàn bộ                             ║");
                 System.out.println("║>[0]. Thoát                                        ║");
-                System.out.println("╚===================================================╝");
+                System.out.println("╚===================================================╝"+ ANSI_RESET);
                 System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
                 int choiceRoom = scan.nextInt();
+
                 if (choiceRoom < 0 || choiceRoom > 7) {
                     System.out.println();
                     System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
@@ -198,9 +210,9 @@ public class RunByAdmin {
                         roomManager.displayRoomList();
                         break;
                     case FIVE:
-                        System.out.println("Nhập giá dưới:");
+                        System.out.println("Nhập giá dưới : ");
                         double lowerPrice = Double.parseDouble(scan.nextLine());
-                        System.out.println("Nhập giá trên:");
+                        System.out.println("Nhập giá trên : ");
                         double abovePrice = Double.parseDouble(scan.nextLine());
                         if (lowerPrice > abovePrice) {
                             System.out.println("⛔ Nhập sai dữ liệu, mời nhập lại !!!");
@@ -215,10 +227,10 @@ public class RunByAdmin {
                         scan.nextLine();
                         System.out.println("Nhập ngày bắt đầu(dd-mm-yyyy):");
                         String before = scan.nextLine();
-                        LocalDate beforeDate = LocalDate.parse(before, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        LocalDate beforeDate = LocalDate.parse(before, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                         System.out.println("Nhập ngày kết thúc(dd-mm-yyyy):");
                         String after = scan.nextLine();
-                        LocalDate afterDate = LocalDate.parse(after, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        LocalDate afterDate = LocalDate.parse(after, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                         billManager.checkRoomStatus(name, beforeDate, afterDate);
                         break;
                     case SEVENTH:
@@ -237,7 +249,6 @@ public class RunByAdmin {
             menuRoomManager();
         }
     }
-
 
 
     private void menuBillManager() {
@@ -305,7 +316,6 @@ public class RunByAdmin {
             menuBillManager();
         }
     }
-
 
 
     private void menuServiceManager() {
@@ -387,7 +397,7 @@ public class RunByAdmin {
                         String roomName = scan.nextLine();
                         System.out.println("Nhập ngày đặt dịch vụ(dd-mm-yyyy):");
                         String date = scan.nextLine();
-                        LocalDate orderDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        LocalDate orderDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                         int choiceService = choiceService();
                         if (choiceService < 0 || choiceService > 8) {
                             System.out.println();
@@ -412,7 +422,7 @@ public class RunByAdmin {
                         String deleteService = scan.nextLine();
                         System.out.println("Nhập ngày đặt dịch vụ(dd-mm-yyyy):");
                         String orderDate1 = scan.nextLine();
-                        LocalDate orderDate2 = LocalDate.parse(orderDate1, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        LocalDate orderDate2 = LocalDate.parse(orderDate1, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                         orderServiceManager.deleteByRoomNameAndServiceName(deleteRoomName, deleteService, orderDate2);
                         break;
                     case THIRD:
@@ -420,7 +430,7 @@ public class RunByAdmin {
                         String roomServiceName = scan.nextLine();
                         System.out.println("Nhập ngày Check-in(dd-mm-yyyy):");
                         String start = scan.nextLine();
-                        LocalDate startDate = LocalDate.parse(start, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+                        LocalDate startDate = LocalDate.parse(start, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                         orderServiceManager.displayByRoomName(roomServiceName, startDate);
                         break;
                     case ZERO:
@@ -436,8 +446,6 @@ public class RunByAdmin {
             menuOrderServiceManager();
         }
     }
-
-
 
 
     private int choiceService() {

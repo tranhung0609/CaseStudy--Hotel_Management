@@ -60,10 +60,10 @@ public class BillManager {
         String staffName = scanner.nextLine();
         System.out.println("Nhập ngày bắt đầu(dd-mm-yyyy):");
         String start = scanner.nextLine();
-        LocalDate startDate = LocalDate.parse(start, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+        LocalDate startDate = LocalDate.parse(start, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println("Nhập ngày kết thúc(dd-mm-yyyy):");
         String end = scanner.nextLine();
-        LocalDate endDate = LocalDate.parse(end, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+        LocalDate endDate = LocalDate.parse(end, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         Bill bill = null;
         if (startDate.isBefore(endDate) && checkRoom(room.getRoomStatus()) && checkDate(room.getRoomName(), startDate, endDate)) {
             bill = new Bill(room, customerName, staffName, startDate, endDate);
@@ -86,10 +86,10 @@ public class BillManager {
         String staffName1 = "Online";
         System.out.println("Nhập ngày bắt đầu(dd-mm-yyyy): ");
         String start1 = scanner.nextLine();
-        LocalDate startDate1 = LocalDate.parse(start1, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+        LocalDate startDate1 = LocalDate.parse(start1, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println("Nhập ngày kết thúc(dd-mm-yyyy):");
         String end1 = scanner.nextLine();
-        LocalDate endDate1 = LocalDate.parse(end1, DateTimeFormatter.ofPattern("dd-LL-yyyy"));
+        LocalDate endDate1 = LocalDate.parse(end1, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         Bill bill = null;
         if (startDate1.isBefore(endDate1) && checkRoom(room.getRoomStatus()) && checkDate(room.getRoomName(), startDate1, endDate1)) {
             bill = new Bill(room, customerName1, staffName1, startDate1, endDate1);
@@ -120,10 +120,10 @@ public class BillManager {
             try {
                 System.out.println("Nhập ngày bắt đầu(dd-mm-yyyy):");
                 String start = scanner.next();
-                editBill.setStartDate(LocalDate.parse(start, DateTimeFormatter.ofPattern("dd-LL-yyyy")));
+                editBill.setStartDate(LocalDate.parse(start, DateTimeFormatter.ofPattern("dd-MM-yyyy")));
                 System.out.println("Nhập ngày kết thúc(dd-mm-yyyy):");
                 String end = scanner.next();
-                editBill.setEndDate(LocalDate.parse(end, DateTimeFormatter.ofPattern("dd-LL-yyyy")));
+                editBill.setEndDate(LocalDate.parse(end, DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

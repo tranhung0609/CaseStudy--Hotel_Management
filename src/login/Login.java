@@ -4,6 +4,7 @@ import account.AccountAdmin;
 import account.AccountUser;
 import account.AccountUserManager;
 import account.UserManager;
+import multithreadthing.MultithreadThing;
 import systems.RunByAdmin;
 import systems.RunByUser;
 import validate.Validate;
@@ -15,6 +16,15 @@ public class Login {
     public static final int ZERO = 0;
     public static final int FIRST = 1;
     public static final int SECOND = 2;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
     //    public static final int THRICE = 3;
 //    public static final int FOURTH = 4;
 //    public static final int FIVE = 5;
@@ -26,6 +36,7 @@ public class Login {
     private final AccountUserManager accountUserManager = new AccountUserManager();
     private final UserManager userManager = new UserManager();
     private final Validate validate = new Validate();
+    private final MultithreadThing myThing = new MultithreadThing();
 
     public Login() {
     }
@@ -46,7 +57,7 @@ public class Login {
     private void menuLogin() throws NumberFormatException {
         do {
             System.out.println();
-            System.out.println("               \uD83C\uDFE8 ラブホテル \uD83C\uDFE8");
+            System.out.println(ANSI_CYAN+"                    \uD83C\uDFE8  ラブホテル   \uD83C\uDFE8                   ");
             System.out.println();
             System.out.println("╔===================================================╗");
             System.out.println("║       ▂ ▃ ▅ ▆ █ QUẢN LÝ KHÁCH SẠN █ ▆ ▅ ▃ ▂       ║");
@@ -54,7 +65,7 @@ public class Login {
             System.out.println("║>[1]. Đăng nhập                                    ║");
             System.out.println("║>[2]. Đăng ký                                      ║");
             System.out.println("║>[0]. Thoát                                        ║");
-            System.out.println("╚===================================================╝");
+            System.out.println("╚===================================================╝"+ANSI_RESET);
             System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
             int choice = Integer.parseInt(scanner.nextLine());
             if (choice < 0 || choice > 2) {
@@ -70,7 +81,7 @@ public class Login {
                     registerAccountUser();
                     break;
                 case ZERO:
-                    System.out.println("Khách sạn ラブホテル xin cảm ơn quý khách");
+                    System.out.println("Love Hotel ラブホテル xin cảm ơn quý khách!!!");
                     System.exit(0);
                     break;
             }
@@ -79,12 +90,12 @@ public class Login {
 
     //Đăng nhập
     private void loginManager() throws InputMismatchException {
-        System.out.println("┎──────────────[ĐĂNG NHẬP]──────────────┒");
+        System.out.println(ANSI_BLUE+"┎──────────────[ĐĂNG NHẬP]──────────────┒");
         System.out.print("┠ ▹ Nhập tài khoản: ");
         String account = scanner.nextLine();
         System.out.print("┠ ▹ Nhập mật khẩu: ");
         String password = scanner.nextLine();
-        System.out.println("┖───────────────────────────────────────┚");
+        System.out.println("┖───────────────────────────────────────┚"+ANSI_RESET);
 
         checkAccount(account, password);
     }

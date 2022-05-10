@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class IOFile<E> {
     public void writeFile(ArrayList<E> arrayData, String pathName) {
         try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(new File(pathName)));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(pathName));
             objectOutputStream.writeObject(arrayData);
             objectOutputStream.close();
         } catch (IOException ioe) {

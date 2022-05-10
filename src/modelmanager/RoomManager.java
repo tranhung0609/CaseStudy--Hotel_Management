@@ -53,7 +53,7 @@ public class RoomManager {
         int numberBedrooms = scanner.nextInt();
         System.out.println("Nhập số lượng nhà vệ sinh:");
         int numberToilets = scanner.nextInt();
-        System.out.println("Nhập giá phòng:");
+        System.out.println("Nhập giá phòng $/đêm:");
         double rentalPrice = scanner.nextDouble();
         System.out.println("Nhập trạng thái phòng:");
         System.out.println("1. Sẵn sàng");
