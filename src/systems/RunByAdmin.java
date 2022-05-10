@@ -210,10 +210,10 @@ public class RunByAdmin {
                         roomManager.displayRoomList();
                         break;
                     case FIVE:
-                        System.out.println("Nhập giá dưới : ");
-                        double lowerPrice = Double.parseDouble(scan.nextLine());
                         System.out.println("Nhập giá trên : ");
-                        double abovePrice = Double.parseDouble(scan.nextLine());
+                        double lowerPrice = scan.nextDouble();
+                        System.out.println("Nhập giá dưới : ");
+                        double abovePrice = scan.nextDouble();
                         if (lowerPrice > abovePrice) {
                             System.out.println("⛔ Nhập sai dữ liệu, mời nhập lại !!!");
                             System.out.println("--------------------");

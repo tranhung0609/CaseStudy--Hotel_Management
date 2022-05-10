@@ -28,7 +28,10 @@ public class MultithreadThing  {
             @Override
             public void run() {
                 if (count > 0){
-                    System.out.println(count);
+                    for (int i = 0; i < count; i++) {
+                        System.out.print("* ");
+                    }
+                    System.out.println("");
                     count--;
                 } else {
                     System.out.println("Chào mừng bạn đến với hệ thống quản lý của Khách sạn ラブホテル"+ ANSI_RESET);
@@ -46,7 +49,7 @@ public class MultithreadThing  {
         calendar.set(Calendar.MINUTE,0);
         calendar.set(Calendar.SECOND,0);
         calendar.set(Calendar.MILLISECOND,0);
-        timer.schedule(timerTask , 0 , 400);
+        timer.schedule(timerTask , 0 , 500);
 
     }
 }
