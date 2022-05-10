@@ -139,22 +139,31 @@ public class RunByAdmin {
 
 
     private int choiceOfAdmin() {
-        System.out.println(ANSI_CYAN+"╔===================================================╗");
-        System.out.println("║         ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂        ║");
-        System.out.println("╠===================================================╣");
-        System.out.println("║>[1]. Quản lý phòng                                ║");
-        System.out.println("║>[2]. Quản lý hóa đơn                              ║");
-        System.out.println("║>[3]. Quản lý dịch vụ                              ║");
-        System.out.println("║>[4]. Khách hàng đặt dịch vụ                       ║");
-        System.out.println("║>[5]. Check-Out                                    ║");
-        System.out.println("║>[6]. Hiển thị thông tin USER                      ║");
-        System.out.println("║>[7]. Xóa USER                                     ║");
-        System.out.println("║>[8]. Tính tổng doanh thu theo tháng               ║");
-        System.out.println("║>[0]. Đăng xuất                                    ║");
-        System.out.println("╚===================================================╝"+ ANSI_RESET);
-        System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-        return scan.nextInt();
-
+        int choice = 0;
+        while (true) {
+            try {
+                System.out.println(ANSI_CYAN + "╔===================================================╗");
+                System.out.println("║         ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂        ║");
+                System.out.println("╠===================================================╣");
+                System.out.println("║>[1]. Quản lý phòng                                ║");
+                System.out.println("║>[2]. Quản lý hóa đơn                              ║");
+                System.out.println("║>[3]. Quản lý dịch vụ                              ║");
+                System.out.println("║>[4]. Khách hàng đặt dịch vụ                       ║");
+                System.out.println("║>[5]. Check-Out                                    ║");
+                System.out.println("║>[6]. Hiển thị thông tin USER                      ║");
+                System.out.println("║>[7]. Xóa USER                                     ║");
+                System.out.println("║>[8]. Tính tổng doanh thu theo tháng               ║");
+                System.out.println("║>[9]. Hiển thị tất cả thông tin                    ║");
+                System.out.println("║>[0]. Đăng xuất                                    ║");
+                System.out.println("╚===================================================╝" + ANSI_RESET);
+                System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
+                choice = scan.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                scan.nextLine();
+            }
+        }
+        return choice;
     }
 
     private void exitOfAdmin() {
@@ -168,30 +177,33 @@ public class RunByAdmin {
 
 
     private void menuRoomManager() {
-        try {
-            do {
-                System.out.println(ANSI_CYAN+"╔===================================================╗");
-                System.out.println("║         ▂ ▃ ▅ ▆ █ QUẢN LÝ PHÒNG █ ▆ ▅ ▃ ▂         ║");
-                System.out.println("╠===================================================╣");
-                System.out.println("║>[1]. Thêm phòng                                   ║");
-                System.out.println("║>[2]. Sửa phòng                                    ║");
-                System.out.println("║>[3]. Xóa phòng                                    ║");
-                System.out.println("║>[4]. Hiển thị danh sách phòng                     ║");
-                System.out.println("║>[5]. Tìm kiếm phòng còn trống theo giá            ║");
-                System.out.println("║>[6]. Kiểm tra trạng thái phòng                    ║");
-                System.out.println("║>[7]. Hiển thị toàn bộ                             ║");
-                System.out.println("║>[0]. Thoát                                        ║");
-                System.out.println("╚===================================================╝"+ ANSI_RESET);
-                System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-                int choiceRoom = scan.nextInt();
+//        try {
+        do {
 
-                if (choiceRoom < 0 || choiceRoom > 7) {
-                    System.out.println();
-                    System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
-                    System.out.println("--------------------");
-                    System.out.println();
-                    menuRoomManager();
-                }
+            System.out.println(ANSI_CYAN + "╔===================================================╗");
+            System.out.println("║         ▂ ▃ ▅ ▆ █ QUẢN LÝ PHÒNG █ ▆ ▅ ▃ ▂         ║");
+            System.out.println("╠===================================================╣");
+            System.out.println("║>[1]. Thêm phòng                                   ║");
+            System.out.println("║>[2]. Sửa phòng                                    ║");
+            System.out.println("║>[3]. Xóa phòng                                    ║");
+            System.out.println("║>[4]. Hiển thị danh sách phòng                     ║");
+            System.out.println("║>[5]. Tìm kiếm phòng còn trống theo giá            ║");
+            System.out.println("║>[6]. Kiểm tra trạng thái phòng                    ║");
+            System.out.println("║>[7]. Hiển thị toàn bộ                             ║");
+            System.out.println("║>[0]. Thoát                                        ║");
+            System.out.println("╚===================================================╝" + ANSI_RESET);
+            System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
+
+            int choiceRoom = scan.nextInt();
+
+            if (choiceRoom < 0 || choiceRoom > 7) {
+                System.out.println();
+                System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
+                System.out.println("--------------------");
+                System.out.println();
+                menuRoomManager();
+            }
+            try {
                 switch (choiceRoom) {
                     case FIRST:
                         roomManager.addRoom();
@@ -240,14 +252,15 @@ public class RunByAdmin {
                         menuOfAdmin();
                         break;
                 }
-            } while (true);
-        } catch (NumberFormatException | DateTimeParseException | InputMismatchException e) {
-            System.out.println();
-            System.out.println("⛔ Bạn nhập sai dữ liệu, mời nhập lại !!!");
-            System.out.println("--------------------");
-            System.out.println();
-            menuRoomManager();
-        }
+//                } while (true) ;
+            } catch (NumberFormatException | DateTimeParseException | InputMismatchException e) {
+                System.out.println();
+                System.out.println("⛔ Bạn nhập sai dữ liệu, mời nhập lại !!!");
+                System.out.println("--------------------");
+                System.out.println();
+                menuRoomManager();
+            }
+        } while (true);
     }
 
 
@@ -346,6 +359,7 @@ public class RunByAdmin {
                     case SECOND:
                         System.out.println("Nhập tên dịch vụ muốn sửa:");
                         String editName = scan.nextLine();
+                        scan.nextLine();
                         serviceManager.editService(editName);
                         break;
                     case THIRD:
@@ -428,6 +442,7 @@ public class RunByAdmin {
                     case THIRD:
                         System.out.println("Nhập tên phòng:");
                         String roomServiceName = scan.nextLine();
+                        scan.nextLine();
                         System.out.println("Nhập ngày Check-in(dd-mm-yyyy):");
                         String start = scan.nextLine();
                         LocalDate startDate = LocalDate.parse(start, DateTimeFormatter.ofPattern("dd-MM-yyyy"));

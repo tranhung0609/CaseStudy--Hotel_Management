@@ -1,10 +1,13 @@
 package main;
 
 import login.Login;
+import multithreadthing.MultithreadThing;
 
 public class demoTest {
     public static void main(String[] args) {
-        new Login().loginSystems();
+        MultithreadThing multithreadThing = new MultithreadThing();
+        multithreadThing.myMultithreadThing();
+
 
     }
 }

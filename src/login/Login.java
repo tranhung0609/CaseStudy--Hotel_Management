@@ -17,18 +17,11 @@ public class Login {
     public static final int FIRST = 1;
     public static final int SECOND = 2;
     public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
+
     public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
+
     public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
-    //    public static final int THRICE = 3;
-//    public static final int FOURTH = 4;
-//    public static final int FIVE = 5;
-//    public static final int SIXTH = 6;
+
     private final Scanner scanner = new Scanner(System.in);
     private final RunByAdmin runByAdmin = new RunByAdmin();
     private final RunByUser runByUser = new RunByUser();
@@ -36,7 +29,7 @@ public class Login {
     private final AccountUserManager accountUserManager = new AccountUserManager();
     private final UserManager userManager = new UserManager();
     private final Validate validate = new Validate();
-    private final MultithreadThing myThing = new MultithreadThing();
+
 
     public Login() {
     }
