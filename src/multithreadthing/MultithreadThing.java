@@ -16,7 +16,7 @@ public class MultithreadThing {
 
         Timer timer = new Timer();
         Date now = new Date();
-        System.out.println(ANSI_YELLOW + "Xin chào quý khách đã đến với khách sạn ラブホテル.\nThời gian hiện tại bây giờ là : " + now.getHours() + "giờ : " + now.getMinutes() + "phút");
+        System.out.println(ANSI_YELLOW + "\t\tXin chào quý khách đã đến với khách sạn ラブホテル.\nThời gian hiện tại bây giờ là : " + now.getHours() + "giờ : " + now.getMinutes() + "phút");
         System.out.println("Vui lòng đợi trong giây lát!!");
         TimerTask timerTask = new TimerTask() {
             int count = 5;

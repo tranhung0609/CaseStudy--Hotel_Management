@@ -178,6 +178,7 @@ public class RunByAdmin {
 
     private void menuRoomManager() {
 //        try {
+
         do {
 
             System.out.println(ANSI_CYAN + "╔===================================================╗");
@@ -464,15 +465,24 @@ public class RunByAdmin {
 
 
     private int choiceService() {
-        System.out.println("╔===================================================╗");
-        System.out.println("║             ▂ ▃ ▅ ▆ █ SERVICE █ ▆ ▅ ▃ ▂           ║");
-        System.out.println("╠===================================================╣");
-        System.out.println("║>[1]. Coca                    >[5]. Vina           ║");
-        System.out.println("║>[2]. 555                     >[6]. Massage Body   ║");
-        System.out.println("║>[3]. Hà Nội City Tour        >[7]. Mỳ Hộp Omachi  ║");
-        System.out.println("║>[4]. Lavie                   >[8]. Bia Heniken    ║");
-        System.out.println("╚===================================================╝");
-        System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
-        return Integer.parseInt(scan.nextLine());
+        int choiceService = 0;
+        while (true){
+            try {
+                System.out.println(ANSI_CYAN +"╔===================================================╗");
+                System.out.println("║             ▂ ▃ ▅ ▆ █ SERVICE █ ▆ ▅ ▃ ▂           ║");
+                System.out.println("╠===================================================╣");
+                System.out.println("║>[1]. Coca                    >[5]. Vina           ║");
+                System.out.println("║>[2]. 555                     >[6]. Massage Body   ║");
+                System.out.println("║>[3]. Hà Nội City Tour        >[7]. Mỳ Hộp Omachi  ║");
+                System.out.println("║>[4]. Lavie                   >[8]. Bia Heniken    ║");
+                System.out.println("╚===================================================╝"+ ANSI_RESET);
+                System.out.println("[\uD83D\uDD11] Nhập lựa chọn:");
+                choiceService = scan.nextInt();
+                break;
+            }catch (InputMismatchException e){
+                scan.nextLine();
+            }
+        }
+        return choiceService;
     }
 }

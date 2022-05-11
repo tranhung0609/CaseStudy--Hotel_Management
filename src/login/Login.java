@@ -50,7 +50,7 @@ public class Login {
     private void menuLogin() throws NumberFormatException {
         do {
             System.out.println();
-            System.out.println(ANSI_CYAN+"                    \uD83C\uDFE8  ラブホテル   \uD83C\uDFE8                   ");
+            System.out.println(ANSI_CYAN+"                    \uD83C\uDFE8  ラブホテル  \uD83C\uDFE8                   ");
             System.out.println();
             System.out.println("╔===================================================╗");
             System.out.println("║       ▂ ▃ ▅ ▆ █ QUẢN LÝ KHÁCH SẠN █ ▆ ▅ ▃ ▂       ║");
