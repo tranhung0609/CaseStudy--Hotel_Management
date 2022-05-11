@@ -36,7 +36,7 @@ public class OrderServiceManager {
         orderServiceList.add(orderService);
         ioFile.writeFile(orderServiceList, PATHNAME_ORDER_SERVICE);
         writeValue();
-        System.out.println("⛔ Thêm dịch vụ " + service.getServiceName() + " của phòng " + bill.getRoom().getRoomName() + " thành công !!!");
+        System.out.println("\uD83D\uDCAF Thêm dịch vụ " + service.getServiceName() + " của phòng " + bill.getRoom().getRoomName() + " thành công !!!");
         System.out.println("--------------------");
     }
 
@@ -50,10 +50,10 @@ public class OrderServiceManager {
         if (orderService != null) {
             orderServiceList.remove(orderService);
             ioFile.writeFile(orderServiceList, PATHNAME_ORDER_SERVICE);
-            System.out.println("⛔ Xóa dịch vụ " + serviceName + " của phòng " + roomName + " thành công !!!");
+            System.out.println("⛔️ Xóa dịch vụ " + serviceName + " của phòng " + roomName + " thành công !!!");
             System.out.println("--------------------");
         } else {
-            System.out.println("⛔ Không tìm thấy dịch vụ cần xóa !!!");
+            System.out.println("⛔️ Không tìm thấy dịch vụ cần xóa !!!");
             System.out.println("--------------------");
         }
     }

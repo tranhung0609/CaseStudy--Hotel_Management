@@ -75,7 +75,7 @@ public class RunByAdmin {
                         System.out.println("Nhập vào phòng:");
                         scan.nextLine();
                         String roomName = scan.nextLine();
-                        System.out.println("Nhập ngày Check-in(dd-mm-yyyy):");
+                        System.out.println("Nhập ngày Check-out(dd-mm-yyyy):");
                         String checkIn = scan.nextLine();
                         LocalDate checkInDate = LocalDate.parse(checkIn, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                         checkOut(roomName, checkInDate);
@@ -160,6 +160,7 @@ public class RunByAdmin {
                 choice = scan.nextInt();
                 break;
             } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED+"Vui lòng chỉ nhập số để chọn chức năng"+ ANSI_RESET);
                 scan.nextLine();
             }
         }
@@ -176,7 +177,7 @@ public class RunByAdmin {
     }
 
 
-    private void menuRoomManager() {
+    private void menuRoomManager() throws InputMismatchException {
 //        try {
 
         do {
@@ -199,7 +200,7 @@ public class RunByAdmin {
 
             if (choiceRoom < 0 || choiceRoom > 7) {
                 System.out.println();
-                System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
+                System.out.println("⛔️ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                 System.out.println("--------------------");
                 System.out.println();
                 menuRoomManager();
@@ -221,6 +222,7 @@ public class RunByAdmin {
                         break;
                     case FOURTH:
                         roomManager.displayRoomList();
+
                         break;
                     case FIVE:
                         System.out.println("Nhập giá trên : ");
@@ -228,7 +230,7 @@ public class RunByAdmin {
                         System.out.println("Nhập giá dưới : ");
                         double abovePrice = scan.nextDouble();
                         if (lowerPrice > abovePrice) {
-                            System.out.println("⛔ Nhập sai dữ liệu, mời nhập lại !!!");
+                            System.out.println("⛔️ Nhập sai dữ liệu, mời nhập lại !!!");
                             System.out.println("--------------------");
                             return;
                         }
@@ -256,7 +258,7 @@ public class RunByAdmin {
 //                } while (true) ;
             } catch (NumberFormatException | DateTimeParseException | InputMismatchException e) {
                 System.out.println();
-                System.out.println("⛔ Bạn nhập sai dữ liệu, mời nhập lại !!!");
+                System.out.println("⛔️ Bạn nhập sai dữ liệu, mời nhập lại !!!");
                 System.out.println("--------------------");
                 System.out.println();
                 menuRoomManager();
@@ -265,7 +267,7 @@ public class RunByAdmin {
     }
 
 
-    private void menuBillManager() {
+    private void menuBillManager() throws InputMismatchException {
         try {
             do {
                 System.out.println("╔===================================================╗");
@@ -282,7 +284,7 @@ public class RunByAdmin {
                 int choiceBill = scan.nextInt();
                 if (choiceBill < 0 || choiceBill > 5) {
                     System.out.println();
-                    System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
+                    System.out.println("⛔️ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                     System.out.println("--------------------");
                     System.out.println();
                     menuBillManager();
@@ -295,7 +297,7 @@ public class RunByAdmin {
                         if (room != null) {
                             billManager.addBill(room);
                         } else {
-                            System.out.println("⛔ Phòng trên không tồn tại !!!");
+                            System.out.println("⛔️ Phòng trên không tồn tại !!!");
                             System.out.println("--------------------");
                         }
                         break;
@@ -324,7 +326,7 @@ public class RunByAdmin {
             } while (true);
         } catch (NumberFormatException | DateTimeParseException e) {
             System.out.println();
-            System.out.println("⛔ Bạn nhập sai dữ liệu, mời nhập lại !!!");
+            System.out.println("⛔️ Bạn nhập sai dữ liệu, mời nhập lại !!!");
             System.out.println("--------------------");
             System.out.println();
             menuBillManager();
@@ -332,7 +334,7 @@ public class RunByAdmin {
     }
 
 
-    private void menuServiceManager() {
+    private void menuServiceManager() throws InputMismatchException {
         try {
             do {
                 System.out.println("╔===================================================╗");
@@ -348,7 +350,7 @@ public class RunByAdmin {
                 int choiceService = scan.nextInt();
                 if (choiceService < 0 || choiceService > 4) {
                     System.out.println();
-                    System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
+                    System.out.println("⛔️ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                     System.out.println("--------------------");
                     System.out.println();
                     menuServiceManager();
@@ -366,6 +368,7 @@ public class RunByAdmin {
                     case THIRD:
                         System.out.println("Nhập tên dịch vụ muốn xóa:");
                         String deleteName = scan.nextLine();
+                        scan.nextLine();
                         serviceManager.deleteServiceByName(deleteName);
                         break;
                     case FOURTH:
@@ -378,7 +381,7 @@ public class RunByAdmin {
             } while (true);
         } catch (NumberFormatException | DateTimeParseException e) {
             System.out.println();
-            System.out.println("⛔ Bạn nhập sai dữ liệu, mời nhập lại !!!");
+            System.out.println("⛔️ Bạn nhập sai dữ liệu, mời nhập lại !!!");
             System.out.println("--------------------");
             System.out.println();
             menuServiceManager();
@@ -386,7 +389,7 @@ public class RunByAdmin {
     }
 
 
-    private void menuOrderServiceManager() {
+    private void menuOrderServiceManager() throws InputMismatchException {
         try {
             do {
                 System.out.println("╔===================================================╗");
@@ -401,7 +404,7 @@ public class RunByAdmin {
                 int choiceOrderService = scan.nextInt();
                 if (choiceOrderService < 0 || choiceOrderService > 3) {
                     System.out.println();
-                    System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
+                    System.out.println("⛔️ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                     System.out.println("--------------------");
                     System.out.println();
                     menuOrderServiceManager();
@@ -416,7 +419,7 @@ public class RunByAdmin {
                         int choiceService = choiceService();
                         if (choiceService < 0 || choiceService > 8) {
                             System.out.println();
-                            System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
+                            System.out.println("⛔️ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                             System.out.println("--------------------");
                             System.out.println();
                             choiceService();
@@ -426,7 +429,7 @@ public class RunByAdmin {
                         if (bill != null && service != null) {
                             orderServiceManager.addOrderService(bill, service, orderDate);
                         } else {
-                            System.out.println("⛔ Phòng trên không tồn tại");
+                            System.out.println("⛔️ Phòng trên không tồn tại");
                             System.out.println("--------------------");
                         }
                         break;
@@ -456,7 +459,7 @@ public class RunByAdmin {
             } while (true);
         } catch (NumberFormatException | DateTimeParseException e) {
             System.out.println();
-            System.out.println("⛔ Bạn nhập sai dữ liệu, mời nhập lại !!!");
+            System.out.println("⛔️ Bạn nhập sai dữ liệu, mời nhập lại !!!");
             System.out.println("--------------------");
             System.out.println();
             menuOrderServiceManager();
@@ -464,7 +467,7 @@ public class RunByAdmin {
     }
 
 
-    private int choiceService() {
+    private int choiceService() throws InputMismatchException {
         int choiceService = 0;
         while (true){
             try {

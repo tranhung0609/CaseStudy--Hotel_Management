@@ -83,6 +83,7 @@ public class BillManager {
         Bill.VALUE = setValue();
         System.out.println("Nhập tên khách thuê:");
         String customerName1 = scanner.nextLine();
+        scanner.nextLine();
         String staffName1 = "Online";
         System.out.println("Nhập ngày bắt đầu(dd-mm-yyyy): ");
         String start1 = scanner.nextLine();
@@ -98,6 +99,8 @@ public class BillManager {
             writeValue();
             System.out.println("Đặt phòng của khách hàng " + customerName1 + " thành công !!!");
             System.out.println("-------------------------------------------------------------");
+
+            scanner.nextLine();
         } else {
             System.out.println("- Phòng đang sửa hoặc đã có người thuê. Mời chọn phòng khác !!");
             System.out.println("---------------------------------------------------------------");
@@ -249,14 +252,14 @@ public class BillManager {
             }
         }
         if (checkName == 0) {
-            System.out.println("⛔ Không tìm thấy phòng !!!");
+            System.out.println("⛔️ Không tìm thấy phòng !!!");
             System.out.println("--------------------");
         } else {
             System.out.println("Trạng thái phòng " + name + " từ " + beforeDate + " đến " + afterDate + ":");
             if (checkDate == 0) {
                 if (firstBill == null) {
                     if (lastBill == null) {
-                        System.out.println("⛔ Đang trống !!!");
+                        System.out.println("⛔️ Đang trống !!!");
                         System.out.println("--------------------");
                     } else {
                         System.out.println("----------------------------------------------------");

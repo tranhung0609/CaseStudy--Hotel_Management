@@ -4,6 +4,7 @@ import login.Login;
 import model.Room;
 import modelmanager.BillManager;
 import modelmanager.RoomManager;
+import write_read_File.IOFile;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,6 +28,8 @@ public class RunByUser {
     private final Scanner scanner = new Scanner(System.in);
     private final RoomManager roomManager = new RoomManager();
     private final BillManager billManager = new BillManager();
+    private final IOFile<Room>ioFile=new IOFile<>();
+
 
     public RunByUser() {
     }
@@ -37,7 +40,7 @@ public class RunByUser {
                 int choice = choiceOfUser();
                 if (choice < 0 || choice > 4) {
                     System.out.println();
-                    System.out.println("⛔ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
+                    System.out.println("⛔️ Lựa chọn không tồn tại, mời bạn nhập lại !!!");
                     System.out.println("--------------------");
                 }
                 switch (choice) {
@@ -56,8 +59,11 @@ public class RunByUser {
                         Room room = roomManager.getRoom(name);
                         if (room != null) {
                             billManager.addBillByUser(room);
+                            ioFile.writeFile(roomManager.getRoomList(),RoomManager.PATHNAME_ROOM);
+                            room.setRoomStatus("Đã thuê");
+
                         } else {
-                            System.out.println("⛔ Phòng trên không tồn tại !!!");
+                            System.out.println("⛔️ Phòng trên không tồn tại !!!");
                             System.out.println("--------------------");
                         }
                         break;
@@ -68,7 +74,7 @@ public class RunByUser {
             } while (true);
         } catch (NumberFormatException | DateTimeParseException | InputMismatchException e) {
             System.out.println();
-            System.out.println("⛔ Bạn đã nhập sai dữ liệu, vui lòng nhập lại !!!");
+            System.out.println("⛔️ Bạn đã nhập sai dữ liệu, vui lòng nhập lại !!!");
             System.out.println("--------------------");
             System.out.println();
             menuOfUser();
@@ -92,7 +98,7 @@ public class RunByUser {
 
     private void exitOfUser() {
         System.out.println();
-        System.out.println("⛔ Chúc quý khách có kỳ nghỉ vui vẻ (^-^)(^_^)!!!");
+        System.out.println("\uD83D\uDC9E Chúc quý khách có kỳ nghỉ vui vẻ (^-^)(^_^)!!!");
         System.out.println("--------------------");
         System.out.println();
         (new Login()).loginSystems();
@@ -100,12 +106,12 @@ public class RunByUser {
     }
 
     private void searchRoomByPrice() throws InputMismatchException {
-        System.out.println("Nhập giá dưới:");
-        double lowerPrice = Double.parseDouble(scanner.nextLine());
         System.out.println("Nhập giá trên:");
+        double lowerPrice = Double.parseDouble(scanner.nextLine());
+        System.out.println("Nhập giá dưới:");
         double abovePrice = Double.parseDouble(scanner.nextLine());
         if (lowerPrice > abovePrice) {
-            System.out.println("⛔ Nhập sai dữ liệu, mời nhập lại !!!");
+            System.out.println("⛔️ Nhập sai dữ liệu, mời nhập lại !!!");
             System.out.println("--------------------");
             return;
         }
@@ -122,5 +128,9 @@ public class RunByUser {
         String after = scanner.nextLine();
         LocalDate afterDate = LocalDate.parse(after, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         billManager.checkRoomStatus(name, beforeDate, afterDate);
+    }
+
+    private void changeStatus(){
+
     }
 }

@@ -74,7 +74,7 @@ public class Login {
                     registerAccountUser();
                     break;
                 case ZERO:
-                    System.out.println("Love Hotel ラブホテル xin cảm ơn quý khách!!!");
+                    System.out.println("Love Hotel ラブホテル cảm ơn quý khách đã sử dụng dịch vụ!!!");
                     System.exit(0);
                     break;
             }
@@ -97,7 +97,7 @@ public class Login {
         try {
             if (checkLoginAccountAdmin(account, password)) {
                 System.out.println();
-                System.out.println("⛔ Đặng nhập hệ thống bởi ADMIN thành công !!!");
+                System.out.println("\uD83D\uDCAF️ Đặng nhập hệ thống bởi ADMIN thành công !!!");
                 System.out.println("--------------------");
                 System.out.println();
                 runByAdmin.menuOfAdmin();
@@ -106,7 +106,7 @@ public class Login {
             }
         } catch (IndexOutOfBoundsException e) {
             System.out.println();
-            System.out.println("⛔ Đăng nhập thất bại. Vui lòng đăng nhập lại !!!");
+            System.out.println("\uD83C\uDD98️ Đăng nhập thất bại. Vui lòng đăng nhập lại !!!");
             System.out.println("--------------------");
             System.out.println();
             loginSystems();
@@ -116,13 +116,13 @@ public class Login {
     private void checkAccountUser(String account, String password) {
         if (checkLoginAccountUser(account, password)) {
             System.out.println();
-            System.out.println("⛔ Đăng nhập hệ thống bởi USER thành công !!!");
+            System.out.println("\uD83D\uDCAF Đăng nhập hệ thống bởi USER thành công !!!");
             System.out.println("--------------------");
             System.out.println();
             runByUser.menuOfUser();
         } else {
             System.out.println();
-            System.out.println("⛔ Tài khoản USER chưa tồn tại. Vui lòng kiểm tra lại !!!");
+            System.out.println("\uD83C\uDD98 Tài khoản USER chưa tồn tại. Vui lòng kiểm tra lại !!!");
             System.out.println("--------------------");
             System.out.println();
             loginSystems();
@@ -176,7 +176,7 @@ public class Login {
             boolean checkAge = (inputAge >= 18 && inputAge < 70);
             scanner.nextLine();
             if (!checkAge) {
-                System.out.println("⛔ Tuổi không hợp lệ !!!");
+                System.out.println("\uD83D\uDD1E Tuổi không hợp lệ !!!");
                 System.out.println(">[Chú ý]: Tuổi trong khoảng từ 18 - 70");
                 System.out.println("--------------------");
             } else {
@@ -244,7 +244,7 @@ public class Login {
             System.out.print("┠ ▹ Nhập email: ");
             String inputEmail = scanner.nextLine();
             if (!validate.validateEmail(inputEmail)) {
-                System.out.println("⛔ Email không hợp lệ !!!");
+                System.out.println("⛔️ Email không hợp lệ !!!");
                 System.out.println(">[Chú ý]: Email phải có dạng: abc.company@yahoo.com/abc12.company@gmail.vn/...");
                 System.out.println("--------------------");
             } else {
@@ -258,13 +258,13 @@ public class Login {
     private void checkAccountUser(String accountUser, String passwordUser, String name, int age, String address, String phoneNumber, String email) {
         if (checkAccount(accountUser)) {
             System.out.println();
-            System.out.println("⛔ Tài khoản đã tồn tại. Vui lòng đăng ký lại !!!");
+            System.out.println("⛔️ Tài khoản đã tồn tại. Vui lòng đăng ký lại !!!");
             System.out.println("--------------------");
             System.out.println();
         } else {
             writeAccountUserAndUser(accountUser, passwordUser, name, age, address, phoneNumber, email);
             System.out.println();
-            System.out.println("⛔ Đăng ký thành công. Mời đăng nhập vào hệ thống !!!");
+            System.out.println("\uD83D\uDCAF️ Đăng ký thành công. Mời đăng nhập vào hệ thống !!!");
             System.out.println("--------------------");
             System.out.println();
         }

@@ -15,9 +15,13 @@ public class RoomManager {
     public static final int SECOND = 2;
     public static final int THRICE = 3;
     public static final String PATHNAME_ROOM = "src\\filedata\\Room";
-    private final ArrayList<Room> roomList;
+    private  ArrayList<Room> roomList = new ArrayList<>();
     private final Scanner scanner = new Scanner(System.in);
     private final IOFile<Room> ioFile = new IOFile<>();
+
+    public void setRoomList(ArrayList<Room> roomList) {
+        this.roomList = roomList;
+    }
 
     public RoomManager() {
         if (new File(PATHNAME_ROOM).length() == 0) {

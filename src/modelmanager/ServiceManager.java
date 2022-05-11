@@ -45,10 +45,10 @@ public class ServiceManager {
             serviceList.add(service);
             ioFile.writeFile(serviceList, PATHNAME_SERVICE);
             writeValue();
-            System.out.println("⛔ Thêm dịch vụ " + name + " thành công !!!");
+            System.out.println("\uD83D\uDCAF️ Thêm dịch vụ " + name + " thành công !!!");
             System.out.println("--------------------");
         } else {
-            System.out.println("⛔ Tên bị trùng, mời nhập lại !!!");
+            System.out.println("⛔️ Tên bị trùng, mời nhập lại !!!");
             System.out.println("--------------------");
         }
 
@@ -67,7 +67,7 @@ public class ServiceManager {
             editService.setPriceOfService(Double.parseDouble(scanner.nextLine()));
             serviceList.set(index, editService);
             ioFile.writeFile(serviceList, PATHNAME_SERVICE);
-            System.out.println("⛔ Sửa thành công !!!");
+            System.out.println("\uD83D\uDCAF Sửa thành công !!!");
             System.out.println("--------------------");
         }
     }
@@ -82,17 +82,17 @@ public class ServiceManager {
         if (deleteService != null) {
             serviceList.remove(deleteService);
             ioFile.writeFile(serviceList, PATHNAME_SERVICE);
-            System.out.println("⛔ Xóa " + name + " thành công !!!");
+            System.out.println("\uD83D\uDCAF Xóa " + name + " thành công !!!");
             System.out.println("--------------------");
         } else {
-            System.out.println("⛔ Không tìm thấy " + name + " !!!");
+            System.out.println("⛔️ Không tìm thấy " + name + " !!!");
             System.out.println("--------------------");
         }
     }
 
     public void displayServiceList() {
         if (serviceList.isEmpty()) {
-            System.out.println("⛔ Danh sách dịch vụ chưa được cập nhật !!!");
+            System.out.println("⛔️ Danh sách dịch vụ chưa được cập nhật !!!");
             System.out.println("--------------------");
             return;
         }

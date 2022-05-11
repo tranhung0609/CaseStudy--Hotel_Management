@@ -74,6 +74,7 @@ public class Room implements Serializable {
         this.rentalPrice = rentalPrice;
     }
 
+
     @Override
     public String toString() {
         return "Phòng ( " +

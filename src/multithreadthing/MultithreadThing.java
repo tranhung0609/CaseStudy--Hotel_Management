@@ -16,8 +16,8 @@ public class MultithreadThing {
 
         Timer timer = new Timer();
         Date now = new Date();
-        System.out.println(ANSI_YELLOW + "\t\tXin chào quý khách đã đến với khách sạn ラブホテル.\nThời gian hiện tại bây giờ là : " + now.getHours() + "giờ : " + now.getMinutes() + "phút");
-        System.out.println("Vui lòng đợi trong giây lát!!");
+        System.out.println(ANSI_YELLOW + "\t\t\t現在の時刻は : " + now.getHours() + "時 : " + now.getMinutes() + "分");
+        System.out.println("\t\t\tしばらくお待ちください!!");
         TimerTask timerTask = new TimerTask() {
             int count = 5;
 
@@ -25,12 +25,12 @@ public class MultithreadThing {
             public void run() {
                 if (count > 0) {
                     for (int i = 0; i < count; i++) {
-                        System.out.print("* ");
+                        System.out.print("\t\t"+ "\uD83C\uDD98︎");
                     }
                     System.out.println("");
                     count--;
                 } else {
-                    System.out.println("Chào mừng bạn đến với hệ thống quản lý của Khách sạn ラブホテル" + ANSI_RESET);
+                    System.out.println("\t\t\tホテルラブホテル管理システムへようこそ" + ANSI_RESET);
                     Login login = new Login();
                     login.loginSystems();
                     timer.cancel();
